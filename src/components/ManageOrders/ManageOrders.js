@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 
+
+//view all user info
 const ManageOrders = () => {
-    
     const [allOrders, setAllOrders] = useState([]);
     const [cencel, setCencel] = useState(false)
     const { user } = useAuth()
+
+    //api call
     useEffect(() => {
         fetch("https://ghoulish-demon-66777.herokuapp.com/myOrders")
             .then((res) => res.json())
             .then((data) => setAllOrders(data));
     }, [cencel]);
+
+    //delete button
     const itemDelete = (id) => {
         const proceed = window.confirm('Are you want to sure delete?');
         if (proceed) {
@@ -32,6 +37,8 @@ const ManageOrders = () => {
         }
     }
     
+
+
     return (
         <div>
             {
@@ -45,12 +52,14 @@ const ManageOrders = () => {
                                 <th scope="col">Email</th>
                             </tr>
                         </thead>
+
+                        {/* mapping */}
                         {allOrders?.map((pd, index) => (
                             <tbody>
                                 <tr>
                                     <td>{index + 1}</td>
                                     <td>{pd?.name}</td>
-                                    <td>{pd?.email}</td>
+                                    <td className="">{pd?.email}</td>
                                     <td>
                                     <button onClick={() => itemDelete(allOrders[index]?._id)} className="btn btn-secondary">Delete</button>
                                     </td>
@@ -65,10 +74,6 @@ const ManageOrders = () => {
                     </table>
                 </div>
             }
-
-
-
-
 
         </div>
     );

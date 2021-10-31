@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+
+//single item
 const MySingleOrder = (props) => {
     const { _id, product } = props?.orders;
     const [singleServices, setSingleServices] = useState([])
     const [cancel, setCencel] = useState(false)
+
+    //api call
     useEffect(() => {
         fetch('https://ghoulish-demon-66777.herokuapp.com/showusers/')
             .then(response => response.json())
@@ -11,6 +15,8 @@ const MySingleOrder = (props) => {
     }, [cancel])
 
     const myProducts = singleServices?.filter(item => item?._id === product)
+
+    //delete button
     const itemDelete = id => {
         const proceed = window.confirm('Are you sure want to delete?');
         if (proceed) {
@@ -38,10 +44,6 @@ const MySingleOrder = (props) => {
             
                 <div className="p-2 card h-100">
 
-                    
-
-                    
-
                     <div>
                         <img src={myProducts[0]?.img} className="w-100" alt="" />
                     </div>
@@ -51,13 +53,6 @@ const MySingleOrder = (props) => {
                     <button onClick={() => itemDelete(_id)} className='btn btn-outline-secondary'>Delete</button>
                 </div>
             
-                
-
-
-
-
-
-
         </div>
     );
 };

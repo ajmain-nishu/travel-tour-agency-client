@@ -1,6 +1,8 @@
 import React from 'react';
 import exploreimg from '../../../Images/explore.png'
 
+
+//home explore section
 const Explore = () => {
     return (
         <div className="container">

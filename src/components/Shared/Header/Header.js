@@ -43,31 +43,16 @@ const Header = () => {
                                     Home
                                 </Link>
                             </li>
-
-                            {/* services link */}
-                            {/* <li className="nav-item">
-                                <Link className="nav-link fs-5" to="/services">
-                                    Services
-                                </Link>
-                            </li> */}
+                            
 
                             {/* gallery part */}
                             <li className="nav-item">
-                                <Link className="text-white nav-link fs-5" to="/service/gallery">
+                                <Link className="text-white nav-link fs-5" to="/gallery">
                                     Gallery
                                 </Link>
                             </li>
 
-                            {/* contact part */}
-                            {/* <li className="nav-item">
-                                <Link
-                                    className="nav-link fs-5"
-                                    to="/contact">
-                                    Contact
-                                </Link>
-                            </li> */}
-
-                            {/* doctor part */}
+                            {/* founder part */}
                             <li className="nav-item">
                                 <Link
                                     className="nav-link text-white fs-5"
@@ -81,7 +66,7 @@ const Header = () => {
                                 <div className="d-md-flex">
 
 
-
+                                    {/* my order part */}
                                     <li className="nav-item">
                                         <Link className="nav-link text-white fs-5" to="/myorders">
                                             My Orders
@@ -89,6 +74,7 @@ const Header = () => {
                                     </li>
 
 
+                                    {/* manage all orders part */}
                                     <li className="nav-item">
                                         <Link className="nav-link text-white fs-5" to="/manageorders">
                                             Manage All Orders
@@ -96,12 +82,14 @@ const Header = () => {
                                     </li>
 
 
+                                    {/* add services part */}
                                     <li className="nav-item">
                                         <Link className="nav-link text-white fs-5" to="/addservices">
                                             Add Services
                                         </Link>
                                     </li>
 
+                                    
                                     <div className="flex-column">
                                         {/* log out button */}
                                         <div>

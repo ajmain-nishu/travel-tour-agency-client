@@ -5,7 +5,7 @@ import founderThree from '../../Images/founder-3.png';
 
 
 
-// navbar doctor section
+// navbar founder section
 const Founder = () => {
     return (
         <div className="py-5">

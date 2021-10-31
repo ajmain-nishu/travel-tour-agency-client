@@ -1,9 +1,14 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
+
+
+//private route add service nav link
 const AddServices = () => {
     const { register, handleSubmit, reset , formState: { errors } } = useForm();
     const onSubmit = data => {
+
+        //server api call
         fetch('https://ghoulish-demon-66777.herokuapp.com/addusers', {
             method: 'POST',
             headers: {
@@ -17,9 +22,14 @@ const AddServices = () => {
             reset()
         })
     };
+
+
+
     return (
         <div className="my-5">
             <h2 className="text-center py-5">Add Services Here</h2>
+
+            {/* add sevice form */}
             <form className="w-50 m-auto" onSubmit={handleSubmit(onSubmit)}>
                 
                 <input className="form-control my-2" type="text" {...register("name")} placeholder="name" />
@@ -36,5 +46,9 @@ const AddServices = () => {
         </div>
     );
 };
+
+
+
+
 
 export default AddServices;

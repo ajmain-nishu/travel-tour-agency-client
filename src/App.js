@@ -9,7 +9,6 @@ import AuthProvider from './context/AuthProvider';
 import NotFound from './components/NotFound/NotFound'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Gallery from './components/Gallery/Gallery';
-import Service from './components/Service/Service';
 import OrderPlace from './components/OrderPlace/OrderPlace';
 import MyOrders from './components/MyOrders/MyOrders';
 import ManageOrders from './components/ManageOrders/ManageOrders';
@@ -32,10 +31,7 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          <PrivateRoute path="/services">
-            <Service></Service>
-          </PrivateRoute>
-          <Route exact path="/service/gallery">
+          <Route exact path="/gallery">
             <Gallery></Gallery>
           </Route>
           <PrivateRoute exact path="/orderplace/:serviceId">

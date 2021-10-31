@@ -14,7 +14,7 @@ const Latest = () => {
             <div className="container">
                 <div className="row">
 
-                    {/* latestt first part */}
+                    {/* latest first part */}
                     <div className="col-12 col-md-4">
                         <div>
                             <img className="w-100" src={latestImgOne} alt="" />

@@ -3,15 +3,19 @@ import useAuth from '../../hooks/useAuth';
 import MySingleOrder from '../MySingleOrder/MySingleOrder';
 
 
-
+// user orders
 const MyOrders = () => {
     const {user} = useAuth()
     const [myOrders, setMyOrders] = useState([])
+
+    //api call
     useEffect(() => {
         fetch(`https://ghoulish-demon-66777.herokuapp.com/myOrders`)
         .then(res => res.json())
         .then(data => setMyOrders(data))
     }, [])
+
+    //filter email
     const productItem = myOrders?.filter(item => item.email === user.email)
     return (
         <div>
