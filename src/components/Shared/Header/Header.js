@@ -122,15 +122,15 @@ const Header = () => {
                                     
 
                                     {/* registration link */}
-                                    <li className="nav-item">
-                                        <Link className="nav-link fs-5" to="/register">
+                                    <li className="nav-item text-white">
+                                        <Link className="nav-link fs-5 text-white" to="/register">
                                             Register
                                         </Link>
                                     </li>
 
                                     {/* login link */}
                                     <li className="nav-item">
-                                        <Link className="nav-link fs-5" to="/login">
+                                        <Link className="nav-link fs-5 text-white" to="/login">
                                             Login
                                         </Link>
                                     </li>
