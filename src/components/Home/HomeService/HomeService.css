@@ -1,0 +1,16 @@
+.homeservice__img {
+    width: 100px;
+    height: 370px;
+}
+
+.homeservice__btn {
+    background-color: rgba(72, 52, 52, .6)
+}
+
+.homeservice__btn:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.homeservice__border {
+    border-radius: 10%;
+}

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Thai Island",
+        "img": "https://i.ibb.co/p36HdwJ/thai-island.jpg",
+        "description": "Best island in Thailand for: Families and first-timers, honeymooners and yoga bunniesKoh Samui is the original Thai island. Where once it drew backpackers and ravers for its sensational beaches with cheap huts and full-moon parties; now it has grown up and smartened up, its not-so-rustic beach bungalows honed down to the very last detail - Koh Samui now has some of the best luxury beach resorts anywhere in the world, several excellent beach hotels, and somfirst-class spas.All of which makes it ideal for those who want the joy of a beach holiday in Thailand without any of the roughness around the edges. Honeymooners can take their pick of super-luxe hotels, beach clubs and Michelin-starred restaurants; parents can go for family-friendly hotels with childcare and splash pools and Western food (there's even a branch of Boots); nervous first-timers can make their first foray into South-East Asia surrounded by home comforts and limited creepy-crawlies.",
+        "duration": "15 Days",
+        "price": "1870",
+        "rating": "7.8"
+    },
+    {
+        "name": "Costa Rica",
+        "img": "https://i.ibb.co/GTsbX9H/costa-rica.jpg",
+        "description": "To many, Costa Rica's charm lies in its lush rainforests, unspoiled beaches and abundance of wildlife. With breathtaking landscapes and a myriad of creatures – from toucans to monkeys to jaguars – it's easy to see why. Where else can you hike active volcanoes, zip line through cloud-covered rainforests and surf warm turquoise waters within the span of just a few days? In this compact but diverse tropical paradise, exhilarating outdoor activities are abundant. Nature-seekers will roam thick jungles while beachgoers will sprawl across the powdery sands. It's hard not to admire all the splendors this Rich Coast has to offer.",
+        "duration": "10 Days",
+        "price": "2830",
+        "rating": "7.4"
+    },
+    {
+        "name": "Scuva Diving",
+        "img": "https://i.ibb.co/Y7J7Rv8/scuva-diving.jpg",
+        "description": "Scuba diving is an underwater swimming activity involving the use of self-contained underwater breathing apparatus (SCUBA). ... an introductory scuba activity with training in the use of scuba equipment in a pool, basic scuba theory and, possibly, an introductory dive in open water.",
+        "duration": "21 Days",
+        "price": "1290",
+        "raing": "7.0"
+    },
+    {
+        "name": "Marmore Waterfalls",
+        "img": "https://i.ibb.co/pXyJ93b/marmore-waterfalls.jpg",
+        "description": "The Marmore Waterfall is unique because his jump of 165 meters is the highest in Europe. It is unique because a real river, the Velino, pounces on another great river, the Nera. Most of the opening of the waterfall is an event and its expectation is the opportunity to immerse themselves in a park equipped. You know the surrounding area, the Nera Valley, rich in history, culture, nature and pleasant culinary surprises.The water from the Velino for many hours a day feeding one of Italy's most important hydroelectric plants producing clean energy. In some hours of the day and night the water is released, creating the spectacle of the waterfall.  The well-equipped Waterfall Park, is always accessible and can be crossed and visited, both with entry from below. Access is along the Valnerina. Both the entry from above, from the village of Marmore, which is on the edge of the plain of Rieti, not far from Lake Piediluco.",
+        "duration": "15 Days",
+        "price": "1870",
+        "rating": "8.4"
+    },
+    {
+        "name": "Diving Adventure",
+        "img": "https://i.ibb.co/9c3Zn5R/diving-adventure.jpg",
+        "description": "ndia offers unlimited possibilities for scuba-diving enthusiasts. Its extensive coastline is dotted with sandy beaches; its two major groups of islands – boasting some of the most unexplored and exotic diving locations in the world – are enough to whet the appetite of the most demanding diving buff.The Andamans and Lakshadweep offer a quality of scuba diving unmatched in the world, and both now figure prominently in the itinerary of a fair number of domestic as well as foreign tourists. The biodiversity of these groups of islands, alongside their relatively warm waters, make scuba diving in India a very attractive adventure option. The (relatively) affordable prices are another draw for foreign travellers. And the pristine locations more than make up for what the country might lack in terms of diving infrastructure and state-of-the-art equipment.",
+        "duration": "10 Days",
+        "price": "1000",
+        "rating": "8.0"
+    },
+    {
+        "name": "Thai Jungle",
+        "img": "https://i.ibb.co/Bg2rX4F/thai-jungle.jpg",
+        "description": "Enjoy the best of Southeast Asia's urban cities, jungles and island relaxation on this 25-day tour of Thailand, from Bangkok to the beach.Highlights include chasing waterfalls in Erawan National Park, island-hopping around the Andaman Sea and seeing the hongs of Phang Nga Bay lit up in bioluminescence.Your trip starts in Bangkok, where you'll discover the main sites of this exciting capital city with a local guide. Then you'll head to Kanchanaburi, known for the Death Railway built by prisoners of war during WWII.You'll then visit the beautiful Erawan National Park, where you can discover picturesque waterfalls and limestone caves, before heading to Khao Sok National Park, where you can enjoy a range of adventure activities including trekking and kayaking. Near the end of the trip, you'll have time to chill out and relax on the beautiful beaches of Koh Phi Phi and Phuket.",
+        "duration": "25 Months",
+        "price": "3830",
+        "rating": "6.3"
+    }
+]
