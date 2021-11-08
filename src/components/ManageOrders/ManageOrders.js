@@ -17,7 +17,7 @@ const ManageOrders = () => {
 
     
     const handleUpdate = (id) => {
-        fetch(`https://ghoulish-demon-66777.herokuapp.com/${id}`, {
+        fetch(`https://ghoulish-demon-66777.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
