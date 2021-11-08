@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 //single item
 const MySingleOrder = (props) => {
-    const { _id, product } = props?.orders;
+    const { _id, product, status } = props?.orders;
     const [singleServices, setSingleServices] = useState([])
     const [cancel, setCencel] = useState(false)
-    const [status, setStatus] = useState("")
 
     //api call
     useEffect(() => {
@@ -15,12 +14,6 @@ const MySingleOrder = (props) => {
             .then(data => setSingleServices(data))
     }, [cancel])
 
-
-    useEffect(() => {
-        fetch('https://ghoulish-demon-66777.herokuapp.com/myOrders')
-            .then(response => response.json())
-            .then(data => setStatus(data))
-    }, [])
 
     const myProducts = singleServices?.filter(item => item?._id === product)
 
@@ -57,7 +50,7 @@ const MySingleOrder = (props) => {
                     <div className="card-body">
                         <h2 className="card-title">{myProducts[0]?.name}</h2>
                     </div>
-                    <button className='btn btn-secondary mb-2'>{status[0]?.status}</button>
+                    <button className='btn btn-secondary mb-2'>{status}</button>
                     <button onClick={() => itemDelete(_id)} className='btn btn-outline-secondary'>Delete</button>
                 </div>
             

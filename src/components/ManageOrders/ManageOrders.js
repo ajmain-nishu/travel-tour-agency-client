@@ -17,11 +17,14 @@ const ManageOrders = () => {
 
     
     const handleUpdate = (id) => {
-        fetch(`https://ghoulish-demon-66777.herokuapp.com/updateStatus/${id}`, {
+        const process = window.confirm('Are you want to sure update?')
+        if (process) {
+            fetch(`https://ghoulish-demon-66777.herokuapp.com/updateStatus/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ status }),
         });
+        }
     };
 
 
@@ -61,7 +64,7 @@ const ManageOrders = () => {
             {
                 user.email && <div>
                     <h1 className='m-5 text-center'>All User Orders</h1>
-                    <table class="table table-hover table-striped w-75 container ">
+                    <table className="table table-hover table-striped w-75 container ">
                         <thead>
                             <tr>
                                 <th scope="col">SL No.</th>
@@ -74,7 +77,7 @@ const ManageOrders = () => {
                         {allOrders?.map((pd, index) => (
                             <tbody>
                                 <tr>
-                                    <td>{index + 1}</td>
+                                    <td key={pd?._id}>{index + 1}</td>
                                     <td>{pd?.name}</td>
                                     <td className="">{pd?.email}</td>
                                     <td>
@@ -82,6 +85,7 @@ const ManageOrders = () => {
                                     onChange={handleStatus}
                                     type="text"
                                     defaultValue={pd.status}
+                                    placeholder="type Approved"
                                     />
                                     </td>
                                     <td>
