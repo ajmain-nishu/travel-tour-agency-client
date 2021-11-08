@@ -11,113 +11,71 @@ initializeAuthentication()
 
 
 const useFirebase = () => {
+
     const [user, setUser] = useState({})
-
-    // error hook
-    const [error, setError] = useState('')
-    const [loginError, setLoginError] = useState('')
-
-    // email and password hook
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    // username hook
-    const [name, setName] = useState('')
     const [isLoading, setIsLoading] = useState(true)
-
-    //auth provier
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider()
 
-    // google sign in
-    const signInUsingGoogle = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
 
-    // google and email sign in
-    const handleEmail = e => {
-        setEmail(e.target.value)
-    }
-    const handlePassword = e => {
-        setPassword(e.target.value)
-    }
-    const handleName = e => {
-        setName(e.target.value)
-    }
-
-    // registration username
-    const setUserName = () => {
-        updateProfile(auth.currentUser, { displayName: name })
-            .then(result => {
-                window.location.reload()
-            })
-            .finally(() => { setIsLoading(false) })
-    }
-
-    // email log in
-    const handleLogin = e => {
-        setIsLoading(true)
-        signInWithEmailAndPassword(auth, email, password)
-            .then(result => result.user)
-            .catch(loginError => setLoginError('Please correct email or password'))
-            .finally(() => setIsLoading(false))
-        e.preventDefault()
-    }
-
-    // email registration
-    const handleRegistration = e => {
-        e.preventDefault()
-        if (password.length < 6) {
-            setError('Password should be at least 6 characters')
-            return
-        }
-
-        // create registration
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user)
-                setError('')
-                setUserName()
-            })
-            .catch(error => setError(error.message))
-    }
-
-    // log out
-    const logOut = () => {
-        setIsLoading(true)
-        signOut(auth)
-            .then(() => setUser({}))
-            .finally(() => setIsLoading(false))
-    }
-
-    // observe user state change
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, user => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-            }
-            else {
+            } else {
                 setUser({})
             }
             setIsLoading(false)
         })
-        return () => unsubscribed
+        return () => unsubscribe()
     }, [])
+
+    // google login
+    const signInWithGoogle = () => {
+        return signInWithPopup(auth, googleProvider)
+
+    }
+
+    // create email
+    const createAccountWithGoogle = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    // email login
+    const loginWithEmailAndPassword = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+
+    const updateName = (name) => {
+        updateProfile(auth.currentUser, { displayName: name })
+            .then(() => {
+                const newUser = { ...user, displayName: name }
+                setUser(newUser)
+            }).catch((error) => {
+
+            });
+    }
+
+    // logout
+    const logOut = () => {
+        signOut(auth).then(() => {
+            setUser({})
+        }).catch((error) => {
+        });
+    }
 
 
     return {
         user,
-        error,
-        signInUsingGoogle,
-        handleEmail,
-        handlePassword,
-        handleLogin,
-        handleRegistration,
-        handleName,
-        loginError,
+        setUser,
+        signInWithGoogle,
+        createAccountWithGoogle,
+        loginWithEmailAndPassword,
+        isLoading,
+        setIsLoading,
         logOut,
-        isLoading
+        updateName
     }
 };
 

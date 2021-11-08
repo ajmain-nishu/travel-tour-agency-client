@@ -6,13 +6,21 @@ const MySingleOrder = (props) => {
     const { _id, product } = props?.orders;
     const [singleServices, setSingleServices] = useState([])
     const [cancel, setCencel] = useState(false)
+    const [status, setStatus] = useState("")
 
     //api call
     useEffect(() => {
-        fetch('https://ghoulish-demon-66777.herokuapp.com/showusers/')
+        fetch('https://ghoulish-demon-66777.herokuapp.com/showusers')
             .then(response => response.json())
             .then(data => setSingleServices(data))
     }, [cancel])
+
+
+    useEffect(() => {
+        fetch('https://ghoulish-demon-66777.herokuapp.com/myOrders')
+            .then(response => response.json())
+            .then(data => setStatus(data))
+    }, [])
 
     const myProducts = singleServices?.filter(item => item?._id === product)
 
@@ -20,13 +28,13 @@ const MySingleOrder = (props) => {
     const itemDelete = id => {
         const proceed = window.confirm('Are you sure want to delete?');
         if (proceed) {
-            const uri = `https://ghoulish-demon-66777.herokuapp.com/${id}`
+            const uri = `https://ghoulish-demon-66777.herokuapp.com/myOrders/${id}`
 
             fetch(uri, {
                 method: 'DELETE',
                 headers: { "content-type": "application/json" }
             })
-                .then(response => response.json())
+                .then(res => res.json())
                 .then(data => {
                     if (data?.deletedCount) {
                         alert('Deleted Successfully')
@@ -35,7 +43,6 @@ const MySingleOrder = (props) => {
                         setCencel(false);
                     }
                     window.location.reload()
-
                 })
         }
     }
@@ -50,6 +57,7 @@ const MySingleOrder = (props) => {
                     <div className="card-body">
                         <h2 className="card-title">{myProducts[0]?.name}</h2>
                     </div>
+                    <button className='btn btn-secondary mb-2'>{status[0]?.status}</button>
                     <button onClick={() => itemDelete(_id)} className='btn btn-outline-secondary'>Delete</button>
                 </div>
             

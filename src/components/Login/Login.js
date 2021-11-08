@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Login.css';
@@ -7,18 +7,60 @@ import './Login.css';
 
 // navbar login section
 const Login = () => {
-    const { signInUsingGoogle, loginError, handleEmail, handleLogin, handlePassword } = useAuth();
-    const location = useLocation()
-    const history = useHistory()
-    const redirect_uri = location.state?.from || '/home'
+    const { signInWithGoogle, setUser, loginWithEmailAndPassword, setIsLoading } = useAuth();
 
-    // google sign in arrow functio button
-    const handleGoogleLogin = () => {
-        signInUsingGoogle()
-        .then(result => {
-            history.push(redirect_uri)
-        })
+    const history = useHistory()
+    const location = useLocation()
+
+    const url = location.state?.from || "/home"
+
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+
+    // email
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
     }
+
+    // password
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    // login email
+    const handleLoginWithEmailAndPassword = (e) => {
+        e.preventDefault();
+
+        loginWithEmailAndPassword(email, password)
+            .then((res) => {
+                setIsLoading(true)
+                setUser(res.user);
+                history.push(url)
+            })
+            .catch((error) => {
+                setError('Please correct email or password')
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }
+
+    //login google
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+            .then((res) => {
+                setIsLoading(true)
+                setUser(res.user)
+                history.push(url)
+            }
+            )
+            .catch((err) => console.log(err))
+            .finally(() => {
+                setIsLoading(false)
+            })
+    };
 
 
     return (
@@ -30,7 +72,7 @@ const Login = () => {
                     <div className="col-md-4 col-12 pt-5 mt-5">
                         <div className="bg-light shadow rounded px-4 py-2 text-center form-color">
                             <form
-                                onSubmit={handleLogin}>
+                                onSubmit={handleLoginWithEmailAndPassword}>
                                 <h3 className="pt-3">Login Today</h3>
 
                                 {/* email part */}
@@ -58,7 +100,7 @@ const Login = () => {
                                 </div>
 
                                 {/* error part */}
-                                <div className="text-danger">{loginError}</div>
+                                <div className="text-danger">{error}</div>
 
                                 {/* login button */}
                                 <div className="my-3">

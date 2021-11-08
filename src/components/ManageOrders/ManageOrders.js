@@ -6,7 +6,24 @@ import useAuth from '../../hooks/useAuth';
 const ManageOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
     const [cencel, setCencel] = useState(false)
+    const [status, setStatus] = useState("");
     const { user } = useAuth()
+
+
+
+    const handleStatus = (e) => {
+        setStatus(e.target.value);
+    };
+
+    
+    const handleUpdate = (id) => {
+        fetch(`https://ghoulish-demon-66777.herokuapp.com/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ status }),
+        });
+    };
+
 
     //api call
     useEffect(() => {
@@ -14,12 +31,12 @@ const ManageOrders = () => {
             .then((res) => res.json())
             .then((data) => setAllOrders(data));
     }, [cencel]);
-
+    console.log(allOrders)
     //delete button
     const itemDelete = (id) => {
         const proceed = window.confirm('Are you want to sure delete?');
         if (proceed) {
-            const uri = `https://ghoulish-demon-66777.herokuapp.com/${id}`
+            const uri = `https://ghoulish-demon-66777.herokuapp.com/myOrders/${id}`
             fetch(uri, {
                 method: 'DELETE',
                 headers: { "content-type": "application/json" }
@@ -32,7 +49,7 @@ const ManageOrders = () => {
                     } else {
                         setCencel(false);
                     }
-                    window.location.reload()
+                    // window.location.reload()
                 })
         }
     }
@@ -61,13 +78,19 @@ const ManageOrders = () => {
                                     <td>{pd?.name}</td>
                                     <td className="">{pd?.email}</td>
                                     <td>
+                                    <input
+                                    onChange={handleStatus}
+                                    type="text"
+                                    defaultValue={pd.status}
+                                    />
+                                    </td>
+                                    <td>
                                     <button onClick={() => itemDelete(allOrders[index]?._id)} className="btn btn-secondary">Delete</button>
                                     </td>
-                                    
-                                    
+                                    <td>
+                                    <button onClick={() => handleUpdate(allOrders[index]?._id)} className="btn btn-secondary">Update</button>
+                                    </td>
                                 </tr>
-
-                                
                             </tbody>
                         ))}
 
